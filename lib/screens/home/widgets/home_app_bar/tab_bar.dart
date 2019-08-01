@@ -8,7 +8,7 @@ class HomeTabBar extends StatefulWidget {
 
 class _HomeTabBarState extends State<HomeTabBar> with TickerProviderStateMixin {
   TabController tabController;
-  List<String> products = ['Apple', 'Xiaomi', 'Huawei', 'Rapoo'];
+  List<String> tabs = ['Apple', 'Xiaomi', 'Huawei', 'Rapoo'];
   @override
   void initState() {
     tabController = TabController(length: 4, vsync: this);
@@ -25,7 +25,7 @@ class _HomeTabBarState extends State<HomeTabBar> with TickerProviderStateMixin {
           indicator: UnderlineTabIndicator(borderSide: BorderSide.none),
           indicatorWeight: 0.1,
           onTap: (int index) => setState(() {}),
-          tabs: products.map((String product) {
+          tabs: tabs.map((String product) {
             bool isSelected = _isTabSelected(product);
             return ProductTab(
               text: product,
@@ -36,7 +36,7 @@ class _HomeTabBarState extends State<HomeTabBar> with TickerProviderStateMixin {
   }
 
   bool _isTabSelected(String product) {
-    return tabController.index == products.indexOf(product);
+    return tabController.index == tabs.indexOf(product);
   }
 }
 
