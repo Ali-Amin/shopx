@@ -12,9 +12,15 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: DrawerIcon(),
+      leading: Padding(
+        padding: const EdgeInsets.only(left: 16.0, top: 16.0),
+        child: DrawerIcon(),
+      ),
       actions: <Widget>[
-        CartIcon(),
+        Padding(
+          padding: const EdgeInsets.only(right: 8.0, top: 16.0),
+          child: CartIcon(),
+        ),
       ],
     );
   }

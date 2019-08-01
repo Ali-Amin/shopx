@@ -5,16 +5,26 @@ class CartIcon extends StatelessWidget {
   CartIcon({Key key, this.color = Colors.white}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        CircleAvatar(
-          backgroundColor: Theme.of(context).accentColor,
-        ),
-        Icon(
-          Icons.shopping_basket,
-          color: color,
-        ),
-      ],
+    return SizedBox(
+      width: 50,
+      child: Stack(
+        children: <Widget>[
+          Align(
+            alignment: Alignment.center,
+            child: Icon(
+              Icons.shopping_basket,
+              color: color,
+            ),
+          ),
+          Align(
+            alignment: Alignment(0.5, -0.4),
+            child: CircleAvatar(
+              radius: 3,
+              backgroundColor: Theme.of(context).accentColor,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
