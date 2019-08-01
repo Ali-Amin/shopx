@@ -17,7 +17,7 @@ class CartIcon extends StatelessWidget {
             ),
           ),
           Align(
-            alignment: Alignment(0.5, -0.4),
+            alignment: Alignment(0.5, -0.5),
             child: CircleAvatar(
               radius: 3,
               backgroundColor: Theme.of(context).accentColor,
