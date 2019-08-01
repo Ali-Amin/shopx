@@ -10,8 +10,12 @@ class HomeScreen extends StatelessWidget {
       ),
       backgroundColor: Theme.of(context).primaryColor,
       body: ListView(
+        shrinkWrap: true,
         children: <Widget>[
-          // Explore(),
+          Padding(
+            padding: const EdgeInsets.only(left: 32.0),
+            child: Explore(),
+          ), // Explore(),
           // TodaysHot(),
         ],
       ),
