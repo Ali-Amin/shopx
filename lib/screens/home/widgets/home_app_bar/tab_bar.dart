@@ -23,6 +23,7 @@ class _HomeTabBarState extends State<HomeTabBar> with TickerProviderStateMixin {
           controller: tabController,
           labelColor: Theme.of(context).accentColor,
           indicator: UnderlineTabIndicator(borderSide: BorderSide.none),
+          indicatorWeight: 0.1,
           onTap: (int index) => setState(() {}),
           tabs: products.map((String product) {
             bool isSelected = _isTabSelected(product);
@@ -79,7 +80,7 @@ class TabIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 5,
+      height: 6,
       child: FlareActor(
         'assets/animations/AnimatedTabBarIndicator.flr',
         animation: 'Untitled',
