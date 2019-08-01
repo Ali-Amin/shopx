@@ -45,8 +45,8 @@ flutter:
   assets:
     - assets/animations/AnimatedTabBarIndicator.flr
     - assets/images/product1.png
+    - assets/images/product2.png
     - assets/images/product3.png
-    - assets/images/product4.webp
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
