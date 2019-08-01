@@ -24,7 +24,7 @@
 				{
 					"name": "Ellipse",
 					"translation": [
-						735.16650390625,
+						743.4998168945312,
 						67.99998474121094
 					],
 					"rotation": 0,
@@ -62,13 +62,13 @@
 				{
 					"name": "Rectangle",
 					"translation": [
-						1086.663818359375,
-						67.99998474121094
+						1094.9970703125,
+						67.99999237060547
 					],
 					"rotation": 0,
 					"scale": [
 						1,
-						1
+						0.42424875497817993
 					],
 					"opacity": 1,
 					"isCollapsed": false,
@@ -95,19 +95,19 @@
 					"clips": [],
 					"width": 501,
 					"height": 100,
-					"cornerRadius": 50,
+					"cornerRadius": 25,
 					"type": "rectangle"
 				},
 				{
 					"name": "Rectangle",
 					"translation": [
 						405.97222900390625,
-						67.99998474121094
+						67.99999237060547
 					],
 					"rotation": 0,
 					"scale": [
 						1,
-						1
+						0.42424875497817993
 					],
 					"opacity": 1,
 					"isCollapsed": false,
@@ -134,7 +134,7 @@
 					"clips": [],
 					"width": 501,
 					"height": 100,
-					"cornerRadius": 50,
+					"cornerRadius": 25,
 					"type": "rectangle"
 				},
 				{
@@ -594,12 +594,12 @@
 									{
 										"time": 0,
 										"interpolatorType": 1,
-										"value": 51.833099365234375
+										"value": 53.49981689453125
 									},
 									{
 										"time": 0.9833333333333333,
 										"interpolatorType": 1,
-										"value": 728.9164428710938
+										"value": 743.4998168945312
 									}
 								]
 							]
@@ -611,12 +611,12 @@
 									{
 										"time": 0,
 										"interpolatorType": 1,
-										"value": 403.330322265625
+										"value": 404.9970703125
 									},
 									{
 										"time": 0.9833333333333333,
 										"interpolatorType": 1,
-										"value": 1080.413818359375
+										"value": 1094.9970703125
 									}
 								]
 							]
@@ -628,12 +628,12 @@
 									{
 										"time": 0,
 										"interpolatorType": 1,
-										"value": -277.3612060546875
+										"value": -284.02777099609375
 									},
 									{
 										"time": 0.9833333333333333,
 										"interpolatorType": 1,
-										"value": 399.72216796875
+										"value": 405.97222900390625
 									}
 								]
 							]
@@ -645,12 +645,12 @@
 									{
 										"time": 0,
 										"interpolatorType": 1,
-										"value": -628.8592529296875
+										"value": -635.5258178710938
 									},
 									{
 										"time": 0.9833333333333333,
 										"interpolatorType": 1,
-										"value": 48.22406005859375
+										"value": 54.47418212890625
 									}
 								]
 							]
