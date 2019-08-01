@@ -12,12 +12,16 @@ class HomeScreen extends StatelessWidget {
       body: ListView(
         shrinkWrap: true,
         physics: BouncingScrollPhysics(),
+        padding: const EdgeInsets.only(bottom: 64),
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.only(left: 32.0, top: 24.0),
             child: Explore(),
-          ), // Explore(),
-          // TodaysHot(),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 32.0, top: 24.0),
+            child: HotItems(),
+          ),
         ],
       ),
     );
