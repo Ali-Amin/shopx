@@ -89,6 +89,7 @@ class ExploreProductList extends StatelessWidget {
           itemCount: products.length,
           itemBuilder: (context, index) => ExploreProductCard(
             product: products[index],
+            index: index,
           ),
         ));
   }

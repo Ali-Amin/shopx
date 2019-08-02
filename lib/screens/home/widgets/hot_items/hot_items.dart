@@ -88,6 +88,7 @@ class HotProductList extends StatelessWidget {
           itemCount: products.length,
           itemBuilder: (context, index) => HotProductCard(
             product: products[index],
+            index: index,
           ),
         ));
   }

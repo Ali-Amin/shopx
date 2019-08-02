@@ -3,8 +3,9 @@ import 'package:shoptronics/common/product_card.dart';
 import 'package:shoptronics/data_models/product.dart';
 
 class ExploreProductCard extends StatelessWidget {
-  ExploreProductCard({Key key, this.product}) : super(key: key);
+  ExploreProductCard({Key key, this.product, this.index}) : super(key: key);
 
+  final num index;
   final Product product;
   Color textColor() {
     switch (product.color) {
@@ -45,8 +46,11 @@ class ExploreProductCard extends StatelessWidget {
           Container(
             height: 115,
             alignment: Alignment.topCenter,
-            child: Image.asset(
-              product.photoUrl,
+            child: Hero(
+              tag: product.photoUrl + index.toString(),
+              child: Image.asset(
+                product.photoUrl,
+              ),
             ),
           ),
           Container(

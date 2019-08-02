@@ -3,8 +3,8 @@ import 'package:shoptronics/common/product_card.dart';
 import 'package:shoptronics/data_models/product.dart';
 
 class HotProductCard extends StatelessWidget {
-  HotProductCard({Key key, this.product}) : super(key: key);
-
+  HotProductCard({Key key, this.product, this.index}) : super(key: key);
+  final num index;
   final Product product;
 
   @override
@@ -21,8 +21,11 @@ class HotProductCard extends StatelessWidget {
             width: 160,
             height: 140,
             alignment: Alignment.centerLeft,
-            child: Image.asset(
-              product.photoUrl,
+            child: Hero(
+              tag: product.photoUrl + index.toString(),
+              child: Image.asset(
+                product.photoUrl,
+              ),
             ),
           ),
         ],
