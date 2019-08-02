@@ -15,12 +15,14 @@ class ProductScreen extends StatelessWidget {
           ListView(
             physics: BouncingScrollPhysics(),
             shrinkWrap: true,
+            padding: const EdgeInsets.only(bottom: 80),
             children: <Widget>[
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.35,
                 child: ImagePageView(),
               ),
-              // ProductInfo(),
+              SizedBox(height: 40),
+              ProductInfo(),
             ],
           ),
         ],

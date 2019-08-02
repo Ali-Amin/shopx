@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoptronics/screens/screens.dart';
 
 class ProductCard extends StatelessWidget {
   ProductCard({Key key, this.child, this.width, this.height, this.color})
@@ -11,22 +12,32 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(top: 20, right: 16),
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      width: width,
-      height: height,
-      child: Stack(
-        children: <Widget>[
-          child,
-          Align(
-            alignment: Alignment.bottomRight,
-            child: _ArrowIcon(),
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProductScreen(),
           ),
-        ],
+        );
+      },
+      child: Container(
+        margin: const EdgeInsets.only(top: 20, right: 16),
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        width: width,
+        height: height,
+        child: Stack(
+          children: <Widget>[
+            child,
+            Align(
+              alignment: Alignment.bottomRight,
+              child: _ArrowIcon(),
+            ),
+          ],
+        ),
       ),
     );
   }
