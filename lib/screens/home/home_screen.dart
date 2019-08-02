@@ -8,20 +8,27 @@ class HomeScreen extends StatelessWidget {
       appBar: HomeAppBar(
         height: MediaQuery.of(context).size.height,
       ),
-      bottomNavigationBar: BottomBar(),
       backgroundColor: Theme.of(context).primaryColor,
-      body: ListView(
-        shrinkWrap: true,
-        physics: BouncingScrollPhysics(),
-        padding: const EdgeInsets.only(bottom: 64),
+      body: Stack(
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(top: 24.0),
-            child: Explore(),
+          ListView(
+            shrinkWrap: true,
+            physics: BouncingScrollPhysics(),
+            padding: const EdgeInsets.only(bottom: 64),
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(top: 24.0),
+                child: Explore(),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 24.0),
+                child: HotItems(),
+              ),
+            ],
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 24.0),
-            child: HotItems(),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: BottomBar(),
           ),
         ],
       ),

@@ -18,41 +18,52 @@ class _BottomBarState extends State<BottomBar> {
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      selectedItemColor: Theme.of(context).accentColor,
-      type: BottomNavigationBarType.shifting,
-      showUnselectedLabels: true,
-      unselectedItemColor: Colors.grey,
-      unselectedFontSize: 1,
-      selectedFontSize: 1,
-      currentIndex: _currentIndex,
-      onTap: (int index) => setState(() => _currentIndex = index),
-      items: [
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.home,
+    return ClipRRect(
+      borderRadius: BorderRadius.only(
+        topRight: Radius.circular(40),
+        topLeft: Radius.circular(40),
+      ),
+      child: Container(
+        height: 56.0,
+        child: Center(
+          child: BottomNavigationBar(
+            selectedItemColor: Theme.of(context).accentColor,
+            type: BottomNavigationBarType.shifting,
+            showUnselectedLabels: true,
+            unselectedItemColor: Colors.grey,
+            unselectedFontSize: 1,
+            selectedFontSize: 1,
+            currentIndex: _currentIndex,
+            onTap: (int index) => setState(() => _currentIndex = index),
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home,
+                ),
+                title: Text(""),
+              ),
+              BottomNavigationBarItem(
+                icon: CartIcon(
+                  color: _cartColor(1), //to check if it is selected
+                ),
+                title: Text(""),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.favorite,
+                ),
+                title: Text(""),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.person,
+                ),
+                title: Text(""),
+              ),
+            ],
           ),
-          title: Text(""),
         ),
-        BottomNavigationBarItem(
-          icon: CartIcon(
-            color: _cartColor(1), //to check if it is selected
-          ),
-          title: Text(""),
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.favorite,
-          ),
-          title: Text(""),
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.person,
-          ),
-          title: Text(""),
-        ),
-      ],
+      ),
     );
   }
 }
