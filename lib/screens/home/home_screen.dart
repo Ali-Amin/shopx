@@ -8,6 +8,7 @@ class HomeScreen extends StatelessWidget {
       appBar: HomeAppBar(
         height: MediaQuery.of(context).size.height,
       ),
+      bottomNavigationBar: BottomBar(),
       backgroundColor: Theme.of(context).primaryColor,
       body: ListView(
         shrinkWrap: true,
