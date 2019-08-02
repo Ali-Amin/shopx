@@ -10,7 +10,7 @@ class HotProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ProductCard(
-      width: 240,
+      width: 255,
       height: 175,
       color: Color(product.color),
       child: Row(
