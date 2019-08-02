@@ -45,6 +45,7 @@ class BottomAppBar extends StatelessWidget implements PreferredSizeWidget {
         Search(),
         SizedBox(height: 20),
         HomeTabBar(),
+        SizedBox(height: 4),
       ],
     );
   }
