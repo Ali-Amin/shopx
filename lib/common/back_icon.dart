@@ -3,22 +3,32 @@ import 'package:flutter/material.dart';
 class BackIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 50,
-      child: Stack(
-        children: <Widget>[
-          Center(
-            child: CircleAvatar(
-              backgroundColor: Colors.white.withAlpha(60),
-            ),
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () {
+          Navigator.pop(context);
+        },
+        splashColor: Colors.white.withAlpha(60),
+        borderRadius: BorderRadius.circular(20),
+        child: SizedBox(
+          width: 50,
+          child: Stack(
+            children: <Widget>[
+              Center(
+                child: CircleAvatar(
+                  backgroundColor: Colors.white.withAlpha(60),
+                ),
+              ),
+              Center(
+                child: ClipPath(
+                  clipper: HorizontalClipper(),
+                  child: Icon(Icons.arrow_back),
+                ),
+              ),
+            ],
           ),
-          Center(
-            child: ClipPath(
-              clipper: HorizontalClipper(),
-              child: Icon(Icons.arrow_back),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
