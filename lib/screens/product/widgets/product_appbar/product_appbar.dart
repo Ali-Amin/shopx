@@ -8,7 +8,7 @@ class ProductScreenAppBar extends StatelessWidget
   ProductScreenAppBar({Key key, @required this.height}) : super(key: key);
 
   @override
-  Size get preferredSize => Size.fromHeight(height * 0.28);
+  Size get preferredSize => Size.fromHeight(height * 0.1);
 
   @override
   Widget build(BuildContext context) {
