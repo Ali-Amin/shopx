@@ -5,15 +5,43 @@ class ProductScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).primaryColor,
       appBar: ProductScreenAppBar(
         height: MediaQuery.of(context).size.height,
       ),
-      body: ListView(
-        physics: BouncingScrollPhysics(),
+      body: Stack(
         children: <Widget>[
-          // ImagePageView(),
-          // ProductInfo(),
+          BackgroundContainer(),
+          ListView(
+            physics: BouncingScrollPhysics(),
+            shrinkWrap: true,
+            children: <Widget>[
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.35,
+                child: ImagePageView(),
+              ),
+              // ProductInfo(),
+            ],
+          ),
         ],
+      ),
+    );
+  }
+}
+
+class BackgroundContainer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Theme.of(context).primaryColor,
+            Theme.of(context).primaryColorLight,
+          ],
+        ),
       ),
     );
   }
