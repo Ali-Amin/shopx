@@ -15,11 +15,11 @@ class HomeScreen extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: 64),
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(left: 32.0, top: 24.0),
+            padding: const EdgeInsets.only(top: 24.0),
             child: Explore(),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 32.0, top: 24.0),
+            padding: const EdgeInsets.only(top: 24.0),
             child: HotItems(),
           ),
         ],

@@ -9,12 +9,15 @@ class HotItems extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
-          "Today's Hot",
-          style: TextStyle(
-            fontWeight: FontWeight.w600,
-            fontSize: 20,
-            color: Colors.white,
+        Padding(
+          padding: const EdgeInsets.only(left: 32.0),
+          child: Text(
+            "Today's Hot",
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 20,
+              color: Colors.white,
+            ),
           ),
         ),
         HotProductList(),
@@ -79,6 +82,7 @@ class HotProductList extends StatelessWidget {
     return SizedBox(
         height: 175,
         child: ListView.builder(
+          padding: const EdgeInsets.only(left: 32.0),
           physics: BouncingScrollPhysics(),
           scrollDirection: Axis.horizontal,
           itemCount: products.length,

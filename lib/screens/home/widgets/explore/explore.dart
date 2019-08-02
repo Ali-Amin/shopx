@@ -10,12 +10,15 @@ class Explore extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
-          "Explore",
-          style: TextStyle(
-            fontWeight: FontWeight.w600,
-            fontSize: 20,
-            color: Colors.white,
+        Padding(
+          padding: const EdgeInsets.only(left: 32.0),
+          child: Text(
+            "Explore",
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 20,
+              color: Colors.white,
+            ),
           ),
         ),
         ExploreProductList(),
@@ -80,6 +83,7 @@ class ExploreProductList extends StatelessWidget {
     return SizedBox(
         height: 250,
         child: ListView.builder(
+          padding: const EdgeInsets.only(left: 32.0),
           physics: BouncingScrollPhysics(),
           scrollDirection: Axis.horizontal,
           itemCount: products.length,
