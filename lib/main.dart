@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shoptronics/common/base_widget.dart';
 import 'package:shoptronics/screens/screens.dart';
 import 'package:shoptronics/stores/store.dart';
 import 'package:shoptronics/theme.dart';
@@ -28,7 +29,10 @@ class _ShoptronicsState extends State<Shoptronics> {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ShoptronicsTheme().themeData,
-        home: HomeScreen(),
+        home: BaseWidget(
+          initState: () => store.initState(),
+          child: HomeScreen(),
+        ),
       ),
     );
   }
