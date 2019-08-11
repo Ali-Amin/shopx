@@ -36,7 +36,7 @@ class InfoCard extends StatelessWidget {
             Flexible(
               flex: 1,
               child: Text(
-                product.price.toStringAsFixed(2),
+                "\$" + product.price.toStringAsFixed(2),
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w400,
