@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:ShopX/screens/product/store/product_store.dart';
 import 'package:flutter/material.dart';
 import 'package:ShopX/screens/product/widgets/product_info/favourite_button.dart';
