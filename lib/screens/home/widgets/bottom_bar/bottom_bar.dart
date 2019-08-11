@@ -20,8 +20,8 @@ class _BottomBarState extends State<BottomBar> {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.only(
-        topRight: Radius.circular(40),
-        topLeft: Radius.circular(40),
+        topRight: Radius.circular(25),
+        topLeft: Radius.circular(25),
       ),
       child: Container(
         height: 72,
