@@ -9,6 +9,7 @@ class Product {
   String get uid => _uid;
   String get category => _category;
   List<String> get photos => _photos;
+  String get defaultPhoto => _photos.first;
   num get price => _price;
   int get backgroundColor => _backgroundColor;
   String get description => _description;
@@ -29,6 +30,24 @@ class Product {
         _category = category,
         _price = price,
         _photos = photos,
+        _backgroundColor = backgroundColor,
+        _isHot = isHot;
+
+  Product({
+    String uid,
+    String name,
+    String description,
+    String category,
+    num price,
+    String photoUrl,
+    int backgroundColor,
+    bool isHot,
+  })  : _uid = uid,
+        _name = name,
+        _description = description,
+        _category = category,
+        _price = price,
+        _photos = [photoUrl],
         _backgroundColor = backgroundColor,
         _isHot = isHot;
 
