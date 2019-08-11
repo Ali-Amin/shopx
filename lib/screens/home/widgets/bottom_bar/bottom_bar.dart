@@ -1,6 +1,7 @@
 import 'package:ShopX/screens/home/store/home_store.dart';
 import 'package:flutter/material.dart';
 import 'package:ShopX/common/common.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
 class BottomBar extends StatelessWidget {
@@ -23,41 +24,44 @@ class BottomBar extends StatelessWidget {
       child: Container(
         height: 72,
         child: Center(
-          child: BottomNavigationBar(
-            selectedItemColor: Theme.of(context).accentColor,
-            type: BottomNavigationBarType.shifting,
-            showUnselectedLabels: true,
-            unselectedItemColor: Colors.grey,
-            unselectedFontSize: 1,
-            selectedFontSize: 1,
-            currentIndex: homeStore.activeNavBarIndex,
-            onTap: (int index) => homeStore.changeNavBarIndex(index),
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home,
+          child: Observer(
+            name: "Bottom Nav Bar Observable",
+            builder: (_) => BottomNavigationBar(
+              selectedItemColor: Theme.of(context).accentColor,
+              type: BottomNavigationBarType.shifting,
+              showUnselectedLabels: true,
+              unselectedItemColor: Colors.grey,
+              unselectedFontSize: 1,
+              selectedFontSize: 1,
+              currentIndex: homeStore.activeNavBarIndex,
+              onTap: (int index) => homeStore.changeNavBarIndex(index),
+              items: [
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.home,
+                  ),
+                  title: Text(""),
                 ),
-                title: Text(""),
-              ),
-              BottomNavigationBarItem(
-                icon: CartIcon(
-                  color: _cartColor(context, 1), //to check if it is selected
+                BottomNavigationBarItem(
+                  icon: CartIcon(
+                    color: _cartColor(context, 1), //to check if it is selected
+                  ),
+                  title: Text(""),
                 ),
-                title: Text(""),
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.favorite,
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.favorite,
+                  ),
+                  title: Text(""),
                 ),
-                title: Text(""),
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.person,
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.person,
+                  ),
+                  title: Text(""),
                 ),
-                title: Text(""),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
