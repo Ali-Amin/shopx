@@ -26,7 +26,7 @@ class ProductScreen extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 80),
               children: <Widget>[
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.35,
+                  height: MediaQuery.of(context).size.height * 0.30,
                   child: ImagePageView(),
                 ),
                 SizedBox(height: 40),
