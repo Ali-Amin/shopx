@@ -19,6 +19,7 @@ class PlusMinusIncrementer extends StatelessWidget {
             borderRadius: BorderRadius.circular(30),
           ),
           child: Observer(
+            name: "Plus Minus Incrementer Observer",
             builder: (_) => Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[

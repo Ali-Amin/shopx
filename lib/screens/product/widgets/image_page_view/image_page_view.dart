@@ -9,30 +9,32 @@ class ImagePageView extends StatelessWidget {
   Widget build(BuildContext context) {
     final Product product = Provider.of(context);
     final ProductStore productStore = Provider.of(context);
-    return Observer(builder: (_) {
-      return Column(
-        children: <Widget>[
-          Hero(
-            tag: product.uid,
-            child: SizedBox(
-              height: MediaQuery.of(context).size.height * 0.30,
-              child: PageView(
-                onPageChanged: productStore.setPageIndex,
-                physics: BouncingScrollPhysics(),
-                children: product.photos.map((String photoUrl) {
-                  return Image.network(photoUrl);
-                }).toList(),
+    return Observer(
+        name: "Product Image Page View Observer",
+        builder: (_) {
+          return Column(
+            children: <Widget>[
+              Hero(
+                tag: product.uid,
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.30,
+                  child: PageView(
+                    onPageChanged: productStore.setPageIndex,
+                    physics: BouncingScrollPhysics(),
+                    children: product.photos.map((String photoUrl) {
+                      return Image.network(photoUrl);
+                    }).toList(),
+                  ),
+                ),
               ),
-            ),
-          ),
-          SizedBox(height: 20),
-          PageIndicator(
-            page: productStore.page,
-            length: product.photos.length,
-          ),
-        ],
-      );
-    });
+              SizedBox(height: 20),
+              PageIndicator(
+                page: productStore.page,
+                length: product.photos.length,
+              ),
+            ],
+          );
+        });
   }
 }
 

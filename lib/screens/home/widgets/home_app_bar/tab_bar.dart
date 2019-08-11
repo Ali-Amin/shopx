@@ -24,6 +24,7 @@ class _HomeTabBarState extends State<HomeTabBar> with TickerProviderStateMixin {
     return Container(
       color: Theme.of(context).primaryColor, //to remove splash effect
       child: Observer(
+        name: "Category TabBar Observer",
         builder: (_) {
           tabController =
               TabController(length: store.categories.length, vsync: this);

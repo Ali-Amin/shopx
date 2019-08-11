@@ -34,6 +34,7 @@ class HotProductList extends StatelessWidget {
   Widget build(BuildContext context) {
     final AppStore store = Provider.of(context);
     return Observer(
+      name: "Hot Products Observer",
       builder: (_) => SizedBox(
           height: 175,
           child: ListView.builder(

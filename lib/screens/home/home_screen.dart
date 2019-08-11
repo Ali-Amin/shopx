@@ -14,6 +14,7 @@ class HomeScreen extends StatelessWidget {
           height: MediaQuery.of(context).size.height,
         ),
         bottomNavigationBar: Observer(
+          name: "Bottom Nav Bar Observer",
           builder: (_) => BottomBar(),
         ),
         backgroundColor: Theme.of(context).primaryColor,
