@@ -60,22 +60,24 @@ class _ExploreProductListState extends State<ExploreProductList> {
 
   @override
   Widget build(BuildContext context) {
-    final store = Provider.of<AppStore>(context);
+    final AppStore store = Provider.of(context);
     return Observer(builder: (context) {
       scrollToStart(controller);
       return SizedBox(
-          height: 250,
-          child: ListView.builder(
-            padding: const EdgeInsets.only(left: 32.0),
-            physics: BouncingScrollPhysics(),
-            scrollDirection: Axis.horizontal,
-            itemCount: store.filteredProducts.length,
-            controller: controller,
-            itemBuilder: (context, index) => Provider<Product>.value(
-              value: store.products[index],
+        height: 250,
+        child: ListView(
+          padding: const EdgeInsets.only(left: 32.0),
+          physics: BouncingScrollPhysics(),
+          scrollDirection: Axis.horizontal,
+          controller: controller,
+          children: store.filteredProducts.map((Product product) {
+            return Provider<Product>.value(
+              value: product,
               child: ExploreProductCard(),
-            ),
-          ));
+            );
+          }).toList(),
+        ),
+      );
     });
   }
 }
