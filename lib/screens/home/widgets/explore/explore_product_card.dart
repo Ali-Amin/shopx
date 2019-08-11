@@ -34,6 +34,8 @@ class ExploreProductCard extends StatelessWidget {
             padding: const EdgeInsets.only(top: 8, left: 12, right: 12),
             child: Text(
               product.name,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 color: textColor(product),
                 fontWeight: FontWeight.w700,

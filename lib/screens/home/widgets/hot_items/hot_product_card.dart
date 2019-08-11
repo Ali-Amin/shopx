@@ -59,6 +59,8 @@ class HotProductInfo extends StatelessWidget {
           padding: const EdgeInsets.only(top: 8, left: 12),
           child: Text(
             product.name,
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
             style: TextStyle(
               color: textColor(product),
               fontWeight: FontWeight.w700,
@@ -71,7 +73,7 @@ class HotProductInfo extends StatelessWidget {
           padding: const EdgeInsets.only(left: 12),
           height: 30,
           child: Text(
-            product.price.toStringAsFixed(2),
+            "\$" + product.price.toStringAsFixed(2),
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w300,
