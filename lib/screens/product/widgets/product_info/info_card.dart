@@ -54,6 +54,8 @@ class InfoCard extends StatelessWidget {
               flex: 5,
               child: Text(
                 product.description,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 3,
                 style: TextStyle(
                   color: Color(0xFF241D8C),
                   height: 2,
