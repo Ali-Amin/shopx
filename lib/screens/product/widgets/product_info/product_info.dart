@@ -6,11 +6,11 @@ import 'package:shoptronics/screens/product/widgets/product_info/info_card.dart'
 class ProductInfo extends StatelessWidget {
   final Product product = Product(
     name: "Huawei ARX 502F",
-    price: "100.00\$",
+    price: 100.00,
     photoUrl: "assets/images/product1.png",
     description:
         "Premium Earphones/Headphones/Headsets to 3.5mm with Stereo Mix & Remote Noise Isolating Control Headphone.",
-    color: 0xFF4769F4,
+    backgroundColor: 0xFF4769F4,
   );
 
   @override

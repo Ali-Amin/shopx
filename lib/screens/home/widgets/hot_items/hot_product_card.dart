@@ -12,7 +12,7 @@ class HotProductCard extends StatelessWidget {
     return ProductCard(
       width: 255,
       height: 175,
-      color: Color(product.color),
+      color: Color(product.backgroundColor),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
@@ -21,11 +21,11 @@ class HotProductCard extends StatelessWidget {
             width: 160,
             height: 140,
             alignment: Alignment.centerLeft,
-            child: Hero(
-              tag: product.photoUrl + index.toString(),
-              child: Image.asset(
-                product.photoUrl,
-              ),
+            // child: Hero(
+            // tag: product.uid,
+            child: Image.asset(
+              product.defaultPhoto,
+              // ),
             ),
           ),
         ],
@@ -40,7 +40,7 @@ class HotProductInfo extends StatelessWidget {
   final Product product;
 
   Color textColor() {
-    switch (product.color) {
+    switch (product.backgroundColor) {
       case 0xFF4769F4:
       case 0xFFA26FFF:
         return Colors.white;
@@ -76,7 +76,7 @@ class HotProductInfo extends StatelessWidget {
           padding: const EdgeInsets.only(left: 12),
           height: 30,
           child: Text(
-            product.price,
+            product.price.toStringAsFixed(2),
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w300,
