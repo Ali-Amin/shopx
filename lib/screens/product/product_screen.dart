@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shoptronics/screens/product/widgets/widgets.dart';
 import 'package:shoptronics/data_models/product.dart';
 
@@ -17,20 +18,21 @@ class ProductScreen extends StatelessWidget {
       body: Stack(
         children: <Widget>[
           BackgroundContainer(),
-          ListView(
-            physics: BouncingScrollPhysics(),
-            shrinkWrap: true,
-            padding: const EdgeInsets.only(bottom: 80),
-            children: <Widget>[
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.35,
-                child: ImagePageView(
-                  product: product,
+          Provider<Product>.value(
+            value: product,
+            child: ListView(
+              physics: BouncingScrollPhysics(),
+              shrinkWrap: true,
+              padding: const EdgeInsets.only(bottom: 80),
+              children: <Widget>[
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.35,
+                  child: ImagePageView(),
                 ),
-              ),
-              SizedBox(height: 40),
-              ProductInfo(),
-            ],
+                SizedBox(height: 40),
+                ProductInfo(),
+              ],
+            ),
           ),
         ],
       ),

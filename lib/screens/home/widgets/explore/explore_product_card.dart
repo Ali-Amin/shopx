@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shoptronics/common/product_card.dart';
 import 'package:shoptronics/data_models/product.dart';
 
 class ExploreProductCard extends StatelessWidget {
-  ExploreProductCard({Key key, this.product, this.index}) : super(key: key);
-
-  final num index;
-  final Product product;
-  Color textColor() {
+  Color textColor(Product product) {
     switch (product.backgroundColor) {
       case 0xFF4769F4:
       case 0xFFA26FFF:
@@ -24,8 +21,8 @@ class ExploreProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Product product = Provider.of(context);
     return ProductCard(
-      product: product,
       width: 150,
       height: 250,
       color: Color(product.backgroundColor),
@@ -38,7 +35,7 @@ class ExploreProductCard extends StatelessWidget {
             child: Text(
               product.name,
               style: TextStyle(
-                color: textColor(),
+                color: textColor(product),
                 fontWeight: FontWeight.w700,
                 fontSize: 20,
               ),
@@ -64,7 +61,7 @@ class ExploreProductCard extends StatelessWidget {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w300,
-                color: textColor().withAlpha(200),
+                color: textColor(product).withAlpha(200),
               ),
             ),
           )

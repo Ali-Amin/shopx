@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shoptronics/screens/screens.dart';
 import 'package:shoptronics/data_models/product.dart';
 
@@ -9,9 +10,7 @@ class ProductCard extends StatelessWidget {
     @required this.width,
     @required this.height,
     @required this.color,
-    @required this.product,
   }) : super(key: key);
-  final Product product;
   final Widget child;
   final double width;
   final double height;
@@ -19,6 +18,7 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Product product = Provider.of(context);
     return GestureDetector(
       onTap: () {
         Navigator.push(

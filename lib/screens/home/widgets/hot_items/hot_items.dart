@@ -41,9 +41,9 @@ class HotProductList extends StatelessWidget {
             physics: BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             itemCount: store.hotItems.length,
-            itemBuilder: (context, index) => HotProductCard(
-              product: store.hotItems[index],
-              index: index,
+            itemBuilder: (context, index) => Provider<Product>.value(
+              value: store.hotItems[index],
+              child: HotProductCard(),
             ),
           )),
     );

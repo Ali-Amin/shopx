@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shoptronics/common/product_card.dart';
 import 'package:shoptronics/data_models/product.dart';
 
 class HotProductCard extends StatelessWidget {
-  HotProductCard({Key key, this.product, this.index}) : super(key: key);
-  final num index;
-  final Product product;
-
   @override
   Widget build(BuildContext context) {
+    final Product product = Provider.of(context);
     return ProductCard(
-      product: product,
       width: 255,
       height: 175,
       color: Color(product.backgroundColor),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Container(width: 80, child: HotProductInfo(product: product)),
+          Container(width: 80, child: HotProductInfo()),
           Container(
             width: 160,
             height: 140,
@@ -36,11 +33,7 @@ class HotProductCard extends StatelessWidget {
 }
 
 class HotProductInfo extends StatelessWidget {
-  HotProductInfo({Key key, this.product}) : super(key: key);
-
-  final Product product;
-
-  Color textColor() {
+  Color textColor(Product product) {
     switch (product.backgroundColor) {
       case 0xFF4769F4:
       case 0xFFA26FFF:
@@ -57,6 +50,7 @@ class HotProductInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Product product = Provider.of(context);
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: <Widget>[
@@ -66,7 +60,7 @@ class HotProductInfo extends StatelessWidget {
           child: Text(
             product.name,
             style: TextStyle(
-              color: textColor(),
+              color: textColor(product),
               fontWeight: FontWeight.w700,
               fontSize: 20,
             ),
@@ -81,7 +75,7 @@ class HotProductInfo extends StatelessWidget {
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w300,
-              color: textColor().withAlpha(200),
+              color: textColor(product).withAlpha(200),
             ),
           ),
         )

@@ -1,22 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shoptronics/data_models/product.dart';
 
-class ImagePageView extends StatefulWidget {
-  final Product product;
-
-  const ImagePageView({Key key, @required this.product}) : super(key: key);
-  @override
-  _ImagePageViewState createState() => _ImagePageViewState();
-}
-
-class _ImagePageViewState extends State<ImagePageView> {
+class ImagePageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final Product product = Provider.of(context);
     return Hero(
-      tag: widget.product.uid,
+      tag: product.uid,
       child: PageView(
         physics: BouncingScrollPhysics(),
-        children: widget.product.photos.map((String photoUrl) {
+        children: product.photos.map((String photoUrl) {
           return Image.network(photoUrl);
         }).toList(),
       ),

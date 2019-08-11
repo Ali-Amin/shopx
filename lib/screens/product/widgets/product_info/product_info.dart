@@ -4,15 +4,6 @@ import 'package:shoptronics/screens/product/widgets/product_info/favourite_butto
 import 'package:shoptronics/screens/product/widgets/product_info/info_card.dart';
 
 class ProductInfo extends StatelessWidget {
-  final Product product = Product(
-    name: "Huawei ARX 502F",
-    price: 100.00,
-    photoUrl: "assets/images/product1.png",
-    description:
-        "Premium Earphones/Headphones/Headsets to 3.5mm with Stereo Mix & Remote Noise Isolating Control Headphone.",
-    backgroundColor: 0xFF4769F4,
-  );
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -21,7 +12,7 @@ class ProductInfo extends StatelessWidget {
         children: <Widget>[
           Align(
             alignment: Alignment.bottomCenter,
-            child: InfoCard(product: product),
+            child: InfoCard(),
           ),
           Align(
             alignment: Alignment(0.7, -1),

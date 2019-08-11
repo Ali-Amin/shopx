@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:shoptronics/screens/home/widgets/explore/explore_product_card.dart';
 import 'package:shoptronics/stores/store.dart';
+import 'package:shoptronics/data_models/product.dart';
 
 class Explore extends StatelessWidget {
   @override
@@ -40,10 +41,8 @@ class ExploreProductList extends StatelessWidget {
             physics: BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             itemCount: store.products.length,
-            itemBuilder: (context, index) => ExploreProductCard(
-              product: store.products[index],
-              index: index,
-            ),
+            itemBuilder: (context, index) => Provider<Product>.value(
+                value: store.products[index], child: ExploreProductCard()),
           )),
     );
   }

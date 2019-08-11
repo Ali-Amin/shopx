@@ -58,6 +58,7 @@ class Product {
       uid: json['uid'],
       name: json['name'],
       price: json['price'],
+      description: json['description'],
       category: json['category'],
       backgroundColor: backgroundColor,
       photos: photos,

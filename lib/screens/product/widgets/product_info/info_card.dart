@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shoptronics/data_models/product.dart';
 import 'package:shoptronics/screens/product/widgets/product_info/plus_minus_incrementer.dart';
 import 'package:shoptronics/screens/product/widgets/product_info/rating.dart';
 
 class InfoCard extends StatelessWidget {
-  final Product product;
-  InfoCard({this.product});
   @override
   Widget build(BuildContext context) {
+    final Product product = Provider.of(context);
     return Container(
       height: 380,
       width: double.infinity,
