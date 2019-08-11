@@ -18,8 +18,8 @@ class BottomBar extends StatelessWidget {
     final HomeStore homeStore = Provider.of(context);
     return ClipRRect(
       borderRadius: BorderRadius.only(
-        topRight: Radius.circular(25),
-        topLeft: Radius.circular(25),
+        topRight: Radius.circular(40),
+        topLeft: Radius.circular(40),
       ),
       child: Container(
         height: 72,
