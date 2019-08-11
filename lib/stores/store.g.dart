@@ -60,21 +60,21 @@ mixin _$AppStore on AppStoreBase, Store {
     }, _$hotItemsAtom, name: '${_$hotItemsAtom.name}_set');
   }
 
-  final _$isBusyAtom = Atom(name: 'AppStoreBase.isBusy');
+  final _$searchKeywordAtom = Atom(name: 'AppStoreBase.searchKeyword');
 
   @override
-  bool get isBusy {
-    _$isBusyAtom.context.enforceReadPolicy(_$isBusyAtom);
-    _$isBusyAtom.reportObserved();
-    return super.isBusy;
+  String get searchKeyword {
+    _$searchKeywordAtom.context.enforceReadPolicy(_$searchKeywordAtom);
+    _$searchKeywordAtom.reportObserved();
+    return super.searchKeyword;
   }
 
   @override
-  set isBusy(bool value) {
-    _$isBusyAtom.context.conditionallyRunInAction(() {
-      super.isBusy = value;
-      _$isBusyAtom.reportChanged();
-    }, _$isBusyAtom, name: '${_$isBusyAtom.name}_set');
+  set searchKeyword(String value) {
+    _$searchKeywordAtom.context.conditionallyRunInAction(() {
+      super.searchKeyword = value;
+      _$searchKeywordAtom.reportChanged();
+    }, _$searchKeywordAtom, name: '${_$searchKeywordAtom.name}_set');
   }
 
   final _$currentlySelectedCategoryAtom =
@@ -136,6 +136,16 @@ mixin _$AppStore on AppStoreBase, Store {
     final _$actionInfo = _$AppStoreBaseActionController.startAction();
     try {
       return super.changeCategory(category);
+    } finally {
+      _$AppStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setSearchKeyword(String keyword) {
+    final _$actionInfo = _$AppStoreBaseActionController.startAction();
+    try {
+      return super.setSearchKeyword(keyword);
     } finally {
       _$AppStoreBaseActionController.endAction(_$actionInfo);
     }

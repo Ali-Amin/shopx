@@ -48,25 +48,33 @@ class _ExploreProductListState extends State<ExploreProductList> {
     super.dispose();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    final store = Provider.of<AppStore>(context);
-    return Observer(builder: (context) {
+  void scrollToStart(ScrollController controller) {
+    if (controller.hasClients) {
       controller.animateTo(
         0,
         curve: Curves.decelerate,
         duration: Duration(milliseconds: 200),
       );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final store = Provider.of<AppStore>(context);
+    return Observer(builder: (context) {
+      scrollToStart(controller);
       return SizedBox(
           height: 250,
           child: ListView.builder(
             padding: const EdgeInsets.only(left: 32.0),
             physics: BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
-            itemCount: store.products.length,
+            itemCount: store.filteredProducts.length,
             controller: controller,
             itemBuilder: (context, index) => Provider<Product>.value(
-                value: store.products[index], child: ExploreProductCard()),
+              value: store.products[index],
+              child: ExploreProductCard(),
+            ),
           ));
     });
   }

@@ -21,7 +21,24 @@ abstract class AppStoreBase with Store {
   ObservableList<Product> hotItems = ObservableList<Product>.of([]);
 
   @observable
-  bool isBusy = true;
+  String searchKeyword;
+
+  @computed
+  List<Product> get filteredProducts {
+    if (searchKeyword != null) {
+      return ObservableList.of(
+        products
+            .where(
+              (Product product) => product.name
+                  .toLowerCase()
+                  .contains(searchKeyword.toLowerCase()),
+            )
+            .toList(),
+      );
+    } else {
+      return products;
+    }
+  }
 
   @observable
   Category currentlySelectedCategory;
@@ -71,5 +88,10 @@ abstract class AppStoreBase with Store {
   void changeCategory(Category category) {
     currentlySelectedCategory = category;
     fetchProducts(category.uid);
+  }
+
+  @action
+  void setSearchKeyword(String keyword) {
+    searchKeyword = keyword;
   }
 }
