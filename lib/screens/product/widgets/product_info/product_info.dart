@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:ShopX/screens/product/widgets/product_info/favourite_button.dart';
 import 'package:ShopX/screens/product/widgets/product_info/info_card.dart';
@@ -8,21 +10,32 @@ class ProductInfo extends StatefulWidget {
 }
 
 class _ProductInfoState extends State<ProductInfo> {
-  double y = 250;
-  double opacity = 0.1;
+  double y;
+  double opacity;
+  Timer delay;
 
-  Future animate() {
-    return Future.delayed(Duration(milliseconds: 50)).then(
-      (_) => setState(() {
+  @override
+  void initState() {
+    y = 250;
+    opacity = 0.1;
+    delay = Timer(
+      Duration(milliseconds: 50),
+      () => setState(() {
         y = 0;
         opacity = 1;
       }),
     );
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    delay.cancel();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    animate();
     return AnimatedOpacity(
       duration: Duration(milliseconds: 400),
       curve: Curves.decelerate,
