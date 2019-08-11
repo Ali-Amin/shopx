@@ -24,7 +24,7 @@ class _BottomBarState extends State<BottomBar> {
         topLeft: Radius.circular(40),
       ),
       child: Container(
-        height: 56.0,
+        height: 72,
         child: Center(
           child: BottomNavigationBar(
             selectedItemColor: Theme.of(context).accentColor,
