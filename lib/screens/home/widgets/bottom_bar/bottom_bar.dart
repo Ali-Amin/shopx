@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shoptronics/common/common.dart';
+import 'package:ShopX/common/common.dart';
 
 class BottomBar extends StatefulWidget {
   @override

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shoptronics/common/base_widget.dart';
-import 'package:shoptronics/screens/screens.dart';
-import 'package:shoptronics/stores/store.dart';
-import 'package:shoptronics/theme.dart';
+import 'package:ShopX/common/base_widget.dart';
+import 'package:ShopX/screens/screens.dart';
+import 'package:ShopX/stores/store.dart';
+import 'package:ShopX/theme.dart';
 
 void main() => runApp(Shoptronics());
 

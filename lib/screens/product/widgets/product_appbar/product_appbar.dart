@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shoptronics/common/cart_icon.dart';
-import 'package:shoptronics/common/common.dart';
+import 'package:ShopX/common/cart_icon.dart';
+import 'package:ShopX/common/common.dart';
 
 class ProductScreenAppBar extends StatelessWidget
     implements PreferredSizeWidget {

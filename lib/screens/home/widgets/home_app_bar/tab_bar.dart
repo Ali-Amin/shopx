@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:shoptronics/data_models/category.dart';
-import 'package:shoptronics/stores/store.dart';
+import 'package:ShopX/data_models/category.dart';
+import 'package:ShopX/stores/store.dart';
 
 class HomeTabBar extends StatefulWidget {
   @override

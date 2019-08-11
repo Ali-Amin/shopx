@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shoptronics/screens/product/widgets/product_info/add_to_cart_button.dart';
+import 'package:ShopX/screens/product/widgets/product_info/add_to_cart_button.dart';
 
 class PlusMinusIncrementer extends StatefulWidget {
   @override

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mobx/mobx.dart';
-import 'package:shoptronics/data_models/category.dart';
-import 'package:shoptronics/services/database_api.dart';
+import 'package:ShopX/data_models/category.dart';
+import 'package:ShopX/services/database_api.dart';
 
 import '../data_models/product.dart';
 part 'store.g.dart';

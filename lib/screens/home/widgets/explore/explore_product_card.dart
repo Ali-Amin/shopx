@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shoptronics/common/product_card.dart';
-import 'package:shoptronics/data_models/product.dart';
+import 'package:ShopX/common/product_card.dart';
+import 'package:ShopX/data_models/product.dart';
 
 class ExploreProductCard extends StatelessWidget {
   Color textColor(Product product) {

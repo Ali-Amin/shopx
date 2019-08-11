@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shoptronics/screens/home/widgets/widgets.dart';
+import 'package:ShopX/screens/home/widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
   @override

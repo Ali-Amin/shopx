@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shoptronics/data_models/product.dart';
-import 'package:shoptronics/screens/product/widgets/product_info/plus_minus_incrementer.dart';
-import 'package:shoptronics/screens/product/widgets/product_info/rating.dart';
+import 'package:ShopX/data_models/product.dart';
+import 'package:ShopX/screens/product/widgets/product_info/plus_minus_incrementer.dart';
+import 'package:ShopX/screens/product/widgets/product_info/rating.dart';
 
 class InfoCard extends StatelessWidget {
   @override
