@@ -1,3 +1,4 @@
+import 'package:ShopX/screens/product/store/product_store.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ShopX/screens/product/widgets/widgets.dart';
@@ -10,30 +11,33 @@ class ProductScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
-      appBar: ProductScreenAppBar(
-        height: MediaQuery.of(context).size.height,
-      ),
-      body: Stack(
-        children: <Widget>[
-          BackgroundContainer(),
-          Provider<Product>.value(
-            value: product,
-            child: ListView(
-              physics: BouncingScrollPhysics(),
-              shrinkWrap: true,
-              padding: const EdgeInsets.only(bottom: 80),
-              children: <Widget>[
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.35,
-                  child: ImagePageView(),
-                ),
-                ProductInfo(),
-              ],
+    return Provider(
+      builder: (_) => ProductStore(),
+      child: Scaffold(
+        backgroundColor: Theme.of(context).primaryColor,
+        appBar: ProductScreenAppBar(
+          height: MediaQuery.of(context).size.height,
+        ),
+        body: Stack(
+          children: <Widget>[
+            BackgroundContainer(),
+            Provider<Product>.value(
+              value: product,
+              child: ListView(
+                physics: BouncingScrollPhysics(),
+                shrinkWrap: true,
+                padding: const EdgeInsets.only(bottom: 80),
+                children: <Widget>[
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.35,
+                    child: ImagePageView(),
+                  ),
+                  ProductInfo(),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -1,16 +1,12 @@
+import 'package:ShopX/screens/home/store/home_store.dart';
 import 'package:flutter/material.dart';
 import 'package:ShopX/common/common.dart';
+import 'package:provider/provider.dart';
 
-class BottomBar extends StatefulWidget {
-  @override
-  _BottomBarState createState() => _BottomBarState();
-}
-
-class _BottomBarState extends State<BottomBar> {
-  int _currentIndex = 0;
-
-  Color _cartColor(int index) {
-    if (_currentIndex == index) {
+class BottomBar extends StatelessWidget {
+  Color _cartColor(BuildContext context, int index) {
+    HomeStore homeStore = Provider.of(context);
+    if (homeStore.activeNavBarIndex == index) {
       return Theme.of(context).accentColor;
     }
     return Colors.grey;
@@ -18,6 +14,7 @@ class _BottomBarState extends State<BottomBar> {
 
   @override
   Widget build(BuildContext context) {
+    final HomeStore homeStore = Provider.of(context);
     return ClipRRect(
       borderRadius: BorderRadius.only(
         topRight: Radius.circular(25),
@@ -33,8 +30,8 @@ class _BottomBarState extends State<BottomBar> {
             unselectedItemColor: Colors.grey,
             unselectedFontSize: 1,
             selectedFontSize: 1,
-            currentIndex: _currentIndex,
-            onTap: (int index) => setState(() => _currentIndex = index),
+            currentIndex: homeStore.activeNavBarIndex,
+            onTap: (int index) => homeStore.changeNavBarIndex(index),
             items: [
               BottomNavigationBarItem(
                 icon: Icon(
@@ -44,7 +41,7 @@ class _BottomBarState extends State<BottomBar> {
               ),
               BottomNavigationBarItem(
                 icon: CartIcon(
-                  color: _cartColor(1), //to check if it is selected
+                  color: _cartColor(context, 1), //to check if it is selected
                 ),
                 title: Text(""),
               ),

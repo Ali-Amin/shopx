@@ -1,44 +1,38 @@
+import 'package:ShopX/screens/product/store/product_store.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:ShopX/data_models/product.dart';
 
-class ImagePageView extends StatefulWidget {
-  @override
-  _ImagePageViewState createState() => _ImagePageViewState();
-}
-
-class _ImagePageViewState extends State<ImagePageView> {
-  int page = 0;
-
+class ImagePageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Product product = Provider.of(context);
-    return Column(
-      children: <Widget>[
-        Hero(
-          tag: product.uid,
-          child: SizedBox(
-            height: MediaQuery.of(context).size.height * 0.30,
-            child: PageView(
-              onPageChanged: (int p) {
-                setState(() {
-                  page = p;
-                });
-              },
-              physics: BouncingScrollPhysics(),
-              children: product.photos.map((String photoUrl) {
-                return Image.network(photoUrl);
-              }).toList(),
+    final ProductStore productStore = Provider.of(context);
+    return Observer(builder: (_) {
+      return Column(
+        children: <Widget>[
+          Hero(
+            tag: product.uid,
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height * 0.30,
+              child: PageView(
+                onPageChanged: productStore.setPageIndex,
+                physics: BouncingScrollPhysics(),
+                children: product.photos.map((String photoUrl) {
+                  return Image.network(photoUrl);
+                }).toList(),
+              ),
             ),
           ),
-        ),
-        SizedBox(height: 20),
-        PageIndicator(
-          page: page,
-          length: product.photos.length,
-        ),
-      ],
-    );
+          SizedBox(height: 20),
+          PageIndicator(
+            page: productStore.page,
+            length: product.photos.length,
+          ),
+        ],
+      );
+    });
   }
 }
 
