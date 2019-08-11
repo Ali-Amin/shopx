@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-
-import 'package:shoptronics/data_models/product.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:provider/provider.dart';
+import 'package:shoptronics/common/base_widget.dart';
 import 'package:shoptronics/screens/home/widgets/explore/explore_product_card.dart';
+import 'package:shoptronics/stores/store.dart';
 
 class Explore extends StatelessWidget {
   @override
@@ -28,69 +30,28 @@ class Explore extends StatelessWidget {
 }
 
 class ExploreProductList extends StatelessWidget {
-  final List<Product> products = [
-    Product(
-      name: "Huawei ARX 502F",
-      price: "100.00\$",
-      photoUrl: "assets/images/product1.png",
-      color: 0xFF4769F4,
-    ),
-    Product(
-      name: "Huawei ARX 502F",
-      price: "100.00\$",
-      photoUrl: "assets/images/product2.png",
-      color: 0xFFFFFFFF,
-    ),
-    Product(
-      name: "Huawei ARX 502F",
-      price: "100.00\$",
-      photoUrl: "assets/images/product3.png",
-      color: 0xFFA26FFF,
-    ),
-    Product(
-      name: "Huawei ARX 502F",
-      price: "100.00\$",
-      photoUrl: "assets/images/product1.png",
-      color: 0xFF4769F4,
-    ),
-    Product(
-      name: "Huawei ARX 502F",
-      price: "100.00\$",
-      photoUrl: "assets/images/product2.png",
-      color: 0xFFFFFFFF,
-    ),
-    Product(
-      name: "Huawei ARX 502F",
-      price: "100.00\$",
-      photoUrl: "assets/images/product3.png",
-      color: 0xFFA26FFF,
-    ),
-    Product(
-      name: "Huawei ARX 502F",
-      price: "100.00\$",
-      photoUrl: "assets/images/product1.png",
-      color: 0xFF4769F4,
-    ),
-    Product(
-      name: "Huawei ARX 502F",
-      price: "100.00\$",
-      photoUrl: "assets/images/product2.png",
-      color: 0xFFFFFFFF,
-    ),
-  ];
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        height: 250,
-        child: ListView.builder(
-          padding: const EdgeInsets.only(left: 32.0),
-          physics: BouncingScrollPhysics(),
-          scrollDirection: Axis.horizontal,
-          itemCount: products.length,
-          itemBuilder: (context, index) => ExploreProductCard(
-            product: products[index],
-            index: index,
-          ),
-        ));
+    final store = Provider.of<AppStore>(context);
+    return BaseWidget(
+      initState: () {
+        store.fetchCategories();
+        store.fetchProducts();
+      },
+      child: Observer(
+        builder: (context) => SizedBox(
+            height: 250,
+            child: ListView.builder(
+              padding: const EdgeInsets.only(left: 32.0),
+              physics: BouncingScrollPhysics(),
+              scrollDirection: Axis.horizontal,
+              itemCount: store.products.length,
+              itemBuilder: (context, index) => ExploreProductCard(
+                product: store.products[index],
+                index: index,
+              ),
+            )),
+      ),
+    );
   }
 }

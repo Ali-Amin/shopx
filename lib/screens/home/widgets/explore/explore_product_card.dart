@@ -8,7 +8,7 @@ class ExploreProductCard extends StatelessWidget {
   final num index;
   final Product product;
   Color textColor() {
-    switch (product.color) {
+    switch (product.backgroundColor) {
       case 0xFF4769F4:
       case 0xFFA26FFF:
         return Colors.white;
@@ -27,7 +27,7 @@ class ExploreProductCard extends StatelessWidget {
     return ProductCard(
       width: 150,
       height: 250,
-      color: Color(product.color),
+      color: Color(product.backgroundColor),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
@@ -45,11 +45,12 @@ class ExploreProductCard extends StatelessWidget {
           ),
           Container(
             height: 115,
+            width: 130,
             alignment: Alignment.topCenter,
             child: Hero(
-              tag: product.photoUrl + index.toString(),
-              child: Image.asset(
-                product.photoUrl,
+              tag: product.uid,
+              child: Image.network(
+                product.defaultPhoto,
               ),
             ),
           ),
@@ -58,7 +59,7 @@ class ExploreProductCard extends StatelessWidget {
             padding: const EdgeInsets.only(left: 12),
             height: 30,
             child: Text(
-              product.price,
+              "\$" + product.price.toStringAsFixed(2),
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w300,
