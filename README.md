@@ -2,6 +2,8 @@
 #### E-Commerce Flutter App Using MobX State Management
 UI by [Soumitro_Sobuj](https://dribbble.com/shots/6876936-Product-App-Exploration)
 
+[apk: release 1.0+1](https://github.com/Ali-Amin/shopx/releases/tag/1.0%2B1)
+
 <img src="https://user-images.githubusercontent.com/41022464/62838374-73b8c900-bc7b-11e9-9e7a-8538d1dd72c7.gif" alt="alt text" width=240 height=480> <img src="https://user-images.githubusercontent.com/41022464/62838376-7c110400-bc7b-11e9-9c70-6f30930efef9.gif" alt="alt text" width=240 height=480>
 
 
