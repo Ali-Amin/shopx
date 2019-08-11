@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-
-import 'package:shoptronics/data_models/product.dart';
-import 'package:shoptronics/screens/home/widgets/explore/explore_product_card.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:provider/provider.dart';
+import 'package:ShopX/screens/home/widgets/explore/explore_product_card.dart';
+import 'package:ShopX/store/store.dart';
+import 'package:ShopX/data_models/product.dart';
 
 class Explore extends StatelessWidget {
   @override
@@ -10,12 +12,15 @@ class Explore extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
-          "Explore",
-          style: TextStyle(
-            fontWeight: FontWeight.w600,
-            fontSize: 20,
-            color: Colors.white,
+        Padding(
+          padding: const EdgeInsets.only(left: 32.0),
+          child: Text(
+            "Explore",
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 20,
+              color: Colors.white,
+            ),
           ),
         ),
         ExploreProductList(),
@@ -24,68 +29,57 @@ class Explore extends StatelessWidget {
   }
 }
 
-class ExploreProductList extends StatelessWidget {
-  final List<Product> products = [
-    Product(
-      name: "Huawei ARX 502F",
-      price: "100.00\$",
-      photoUrl: "assets/images/product1.png",
-      color: 0xFF4769F4,
-    ),
-    Product(
-      name: "Huawei ARX 502F",
-      price: "100.00\$",
-      photoUrl: "assets/images/product2.png",
-      color: 0xFFFFFFFF,
-    ),
-    Product(
-      name: "Huawei ARX 502F",
-      price: "100.00\$",
-      photoUrl: "assets/images/product3.png",
-      color: 0xFFA26FFF,
-    ),
-    Product(
-      name: "Huawei ARX 502F",
-      price: "100.00\$",
-      photoUrl: "assets/images/product1.png",
-      color: 0xFF4769F4,
-    ),
-    Product(
-      name: "Huawei ARX 502F",
-      price: "100.00\$",
-      photoUrl: "assets/images/product2.png",
-      color: 0xFFFFFFFF,
-    ),
-    Product(
-      name: "Huawei ARX 502F",
-      price: "100.00\$",
-      photoUrl: "assets/images/product3.png",
-      color: 0xFFA26FFF,
-    ),
-    Product(
-      name: "Huawei ARX 502F",
-      price: "100.00\$",
-      photoUrl: "assets/images/product1.png",
-      color: 0xFF4769F4,
-    ),
-    Product(
-      name: "Huawei ARX 502F",
-      price: "100.00\$",
-      photoUrl: "assets/images/product2.png",
-      color: 0xFFFFFFFF,
-    ),
-  ];
+class ExploreProductList extends StatefulWidget {
+  @override
+  _ExploreProductListState createState() => _ExploreProductListState();
+}
+
+class _ExploreProductListState extends State<ExploreProductList> {
+  ScrollController controller;
+  @override
+  void initState() {
+    controller = ScrollController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  void scrollToStart(ScrollController controller) {
+    if (controller.hasClients) {
+      controller.animateTo(
+        0,
+        curve: Curves.decelerate,
+        duration: Duration(milliseconds: 200),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        height: 250,
-        child: ListView.builder(
-          physics: BouncingScrollPhysics(),
-          scrollDirection: Axis.horizontal,
-          itemCount: products.length,
-          itemBuilder: (context, index) => ExploreProductCard(
-            product: products[index],
-          ),
-        ));
+    final AppStore store = Provider.of(context);
+    return Observer(
+        name: "Explore Products Observer",
+        builder: (context) {
+          scrollToStart(controller);
+          return SizedBox(
+            height: 250,
+            child: ListView(
+              padding: const EdgeInsets.only(left: 32.0),
+              physics: BouncingScrollPhysics(),
+              scrollDirection: Axis.horizontal,
+              controller: controller,
+              children: store.filteredProducts.map((Product product) {
+                return Provider<Product>.value(
+                  value: product,
+                  child: ExploreProductCard(),
+                );
+              }).toList(),
+            ),
+          );
+        });
   }
 }

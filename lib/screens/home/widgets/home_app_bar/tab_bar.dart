@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:provider/provider.dart';
+import 'package:ShopX/data_models/category.dart';
+import 'package:ShopX/store/store.dart';
 
 class HomeTabBar extends StatefulWidget {
   @override
@@ -8,35 +12,41 @@ class HomeTabBar extends StatefulWidget {
 
 class _HomeTabBarState extends State<HomeTabBar> with TickerProviderStateMixin {
   TabController tabController;
-  List<String> tabs = ['Apple', 'Xiaomi', 'Huawei', 'Rapoo'];
   @override
   void initState() {
-    tabController = TabController(length: 4, vsync: this);
+    tabController = TabController(length: 1, vsync: this);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    final AppStore store = Provider.of(context);
     return Container(
       color: Theme.of(context).primaryColor, //to remove splash effect
-      child: TabBar(
-          controller: tabController,
-          labelColor: Theme.of(context).accentColor,
-          indicator: UnderlineTabIndicator(borderSide: BorderSide.none),
-          indicatorWeight: 0.1,
-          onTap: (int index) => setState(() {}),
-          tabs: tabs.map((String product) {
-            bool isSelected = _isTabSelected(product);
-            return ProductTab(
-              text: product,
-              isSelected: isSelected,
-            );
-          }).toList()),
-    );
-  }
+      child: Observer(
+        name: "Category TabBar Observer",
+        builder: (_) {
+          tabController =
+              TabController(length: store.categories.length, vsync: this);
 
-  bool _isTabSelected(String product) {
-    return tabController.index == tabs.indexOf(product);
+          return TabBar(
+              controller: tabController,
+              labelColor: Theme.of(context).accentColor,
+              indicator: UnderlineTabIndicator(borderSide: BorderSide.none),
+              indicatorWeight: 0.1,
+              onTap: (int index) {
+                store.changeCategory(store.categories[index]);
+              },
+              tabs: store.categories.map((Category category) {
+                bool isSelected = store.currentlySelectedCategory == category;
+                return ProductTab(
+                  text: category.name.toUpperCase(),
+                  isSelected: isSelected,
+                );
+              }).toList());
+        },
+      ),
+    );
   }
 }
 

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:ShopX/store/store.dart';
 
 class Search extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final AppStore store = Provider.of(context);
     return Container(
       width: MediaQuery.of(context).size.width * 0.85,
       padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 20),
@@ -17,11 +20,15 @@ class Search extends StatelessWidget {
           Expanded(
             child: TextField(
               decoration: InputDecoration(
-                  hintText: "Search for product",
-                  hintStyle: TextStyle(
-                    color: Colors.white.withAlpha(120),
-                  ),
-                  border: InputBorder.none),
+                hintText: "Search for product",
+                hintStyle: TextStyle(
+                  color: Colors.white.withAlpha(120),
+                ),
+                border: InputBorder.none,
+              ),
+              onChanged: (String keyword) {
+                store.setSearchKeyword(keyword);
+              },
             ),
           ),
           Icon(

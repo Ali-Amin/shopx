@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shoptronics/common/cart_icon.dart';
-import 'package:shoptronics/common/drawer_icon.dart';
-import 'package:shoptronics/screens/home/widgets/home_app_bar/search.dart';
-import 'package:shoptronics/screens/home/widgets/home_app_bar/tab_bar.dart';
+import 'package:ShopX/common/cart_icon.dart';
+import 'package:ShopX/common/drawer_icon.dart';
+import 'package:ShopX/screens/home/widgets/home_app_bar/search.dart';
+import 'package:ShopX/screens/home/widgets/home_app_bar/tab_bar.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   final num height;
@@ -45,6 +45,7 @@ class BottomAppBar extends StatelessWidget implements PreferredSizeWidget {
         Search(),
         SizedBox(height: 20),
         HomeTabBar(),
+        SizedBox(height: 4),
       ],
     );
   }

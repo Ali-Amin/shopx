@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:shoptronics/common/product_card.dart';
-import 'package:shoptronics/data_models/product.dart';
+import 'package:provider/provider.dart';
+import 'package:ShopX/common/product_card.dart';
+import 'package:ShopX/data_models/product.dart';
 
 class ExploreProductCard extends StatelessWidget {
-  ExploreProductCard({Key key, this.product}) : super(key: key);
-
-  final Product product;
-  Color textColor() {
-    switch (product.color) {
+  Color textColor(Product product) {
+    switch (product.backgroundColor) {
       case 0xFF4769F4:
       case 0xFFA26FFF:
         return Colors.white;
@@ -23,10 +21,11 @@ class ExploreProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Product product = Provider.of(context);
     return ProductCard(
       width: 150,
       height: 250,
-      color: Color(product.color),
+      color: Color(product.backgroundColor),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
@@ -35,8 +34,10 @@ class ExploreProductCard extends StatelessWidget {
             padding: const EdgeInsets.only(top: 8, left: 12, right: 12),
             child: Text(
               product.name,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(
-                color: textColor(),
+                color: textColor(product),
                 fontWeight: FontWeight.w700,
                 fontSize: 20,
               ),
@@ -44,9 +45,13 @@ class ExploreProductCard extends StatelessWidget {
           ),
           Container(
             height: 115,
+            width: 130,
             alignment: Alignment.topCenter,
-            child: Image.asset(
-              product.photoUrl,
+            child: Hero(
+              tag: product.uid,
+              child: Image.network(
+                product.defaultPhoto,
+              ),
             ),
           ),
           Container(
@@ -54,11 +59,11 @@ class ExploreProductCard extends StatelessWidget {
             padding: const EdgeInsets.only(left: 12),
             height: 30,
             child: Text(
-              product.price,
+              "\$" + product.price.toStringAsFixed(2),
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w300,
-                color: textColor().withAlpha(200),
+                color: textColor(product).withAlpha(200),
               ),
             ),
           )

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:shoptronics/data_models/product.dart';
-import 'package:shoptronics/screens/home/widgets/hot_items/hot_product_card.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:provider/provider.dart';
+import 'package:ShopX/data_models/product.dart';
+import 'package:ShopX/screens/home/widgets/hot_items/hot_product_card.dart';
+import 'package:ShopX/store/store.dart';
 
 class HotItems extends StatelessWidget {
   @override
@@ -9,12 +12,15 @@ class HotItems extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
-          "Today's Hot",
-          style: TextStyle(
-            fontWeight: FontWeight.w600,
-            fontSize: 20,
-            color: Colors.white,
+        Padding(
+          padding: const EdgeInsets.only(left: 32.0),
+          child: Text(
+            "Today's Hot",
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 20,
+              color: Colors.white,
+            ),
           ),
         ),
         HotProductList(),
@@ -24,67 +30,23 @@ class HotItems extends StatelessWidget {
 }
 
 class HotProductList extends StatelessWidget {
-  final List<Product> products = [
-    Product(
-      name: "Huawei ARX 502F",
-      price: "100.00\$",
-      photoUrl: "assets/images/product3.png",
-      color: 0xFFA26FFF,
-    ),
-    Product(
-      name: "Huawei ARX 502F",
-      price: "100.00\$",
-      photoUrl: "assets/images/product1.png",
-      color: 0xFF4769F4,
-    ),
-    Product(
-      name: "Huawei ARX 502F",
-      price: "100.00\$",
-      photoUrl: "assets/images/product2.png",
-      color: 0xFFFFFFFF,
-    ),
-    Product(
-      name: "Huawei ARX 502F",
-      price: "100.00\$",
-      photoUrl: "assets/images/product3.png",
-      color: 0xFFA26FFF,
-    ),
-    Product(
-      name: "Huawei ARX 502F",
-      price: "100.00\$",
-      photoUrl: "assets/images/product1.png",
-      color: 0xFF4769F4,
-    ),
-    Product(
-      name: "Huawei ARX 502F",
-      price: "100.00\$",
-      photoUrl: "assets/images/product2.png",
-      color: 0xFFFFFFFF,
-    ),
-    Product(
-      name: "Huawei ARX 502F",
-      price: "100.00\$",
-      photoUrl: "assets/images/product1.png",
-      color: 0xFF4769F4,
-    ),
-    Product(
-      name: "Huawei ARX 502F",
-      price: "100.00\$",
-      photoUrl: "assets/images/product2.png",
-      color: 0xFFFFFFFF,
-    ),
-  ];
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        height: 175,
-        child: ListView.builder(
-          physics: BouncingScrollPhysics(),
-          scrollDirection: Axis.horizontal,
-          itemCount: products.length,
-          itemBuilder: (context, index) => HotProductCard(
-            product: products[index],
-          ),
-        ));
+    final AppStore store = Provider.of(context);
+    return Observer(
+      name: "Hot Products Observer",
+      builder: (_) => SizedBox(
+          height: 175,
+          child: ListView.builder(
+            padding: const EdgeInsets.only(left: 32.0),
+            physics: BouncingScrollPhysics(),
+            scrollDirection: Axis.horizontal,
+            itemCount: store.hotItems.length,
+            itemBuilder: (context, index) => Provider<Product>.value(
+              value: store.hotItems[index],
+              child: HotProductCard(),
+            ),
+          )),
+    );
   }
 }

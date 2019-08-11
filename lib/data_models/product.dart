@@ -1,20 +1,67 @@
-import 'package:flutter/material.dart';
-
 class Product {
-  String _name;
-  String _price;
-  String _photoUrl;
-  int _backgroundColor = 0xFF2547F4;
+  final String _name, _description, _uid, _category;
+  final List<String> _photos;
+  final int _backgroundColor;
+  final num _price;
+  final bool _isHot;
 
   String get name => _name;
-  String get price => _price;
-  String get photoUrl => _photoUrl;
-  int get color => _backgroundColor;
+  String get uid => _uid;
+  String get category => _category;
+  List<String> get photos => _photos;
+  String get defaultPhoto => _photos.first;
+  num get price => _price;
+  int get backgroundColor => _backgroundColor;
+  String get description => _description;
+  bool get isHot => _isHot;
 
-  Product({String name, String price, String photoUrl, int color}) {
-    _name = name;
-    _price = price;
-    _photoUrl = photoUrl;
-    _backgroundColor = color;
+  Product._({
+    String uid,
+    String name,
+    String description,
+    String category,
+    num price,
+    List<String> photos,
+    int backgroundColor,
+    bool isHot,
+  })  : _uid = uid,
+        _name = name,
+        _description = description,
+        _category = category,
+        _price = price,
+        _photos = photos,
+        _backgroundColor = backgroundColor,
+        _isHot = isHot;
+
+  Product({
+    String uid,
+    String name,
+    String description,
+    String category,
+    num price,
+    String photoUrl,
+    int backgroundColor,
+    bool isHot,
+  })  : _uid = uid,
+        _name = name,
+        _description = description,
+        _category = category,
+        _price = price,
+        _photos = [photoUrl],
+        _backgroundColor = backgroundColor,
+        _isHot = isHot;
+
+  factory Product.fromJson(Map<String, dynamic> json) {
+    List<String> photos = List.castFrom<dynamic, String>(json['photos']);
+    int backgroundColor = int.tryParse(json['backgroundColor']);
+    return Product._(
+      uid: json['uid'],
+      name: json['name'],
+      price: json['price'],
+      description: json['description'],
+      category: json['category'],
+      backgroundColor: backgroundColor,
+      photos: photos,
+    );
   }
 }

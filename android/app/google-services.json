@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "171747250732",
+    "firebase_url": "https://shoptronics-fb0e6.firebaseio.com",
+    "project_id": "shoptronics-fb0e6",
+    "storage_bucket": "shoptronics-fb0e6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:171747250732:android:1299def0260843bb",
+        "android_client_info": {
+          "package_name": "com.example.shoptronics"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "171747250732-k7r5oe75m1sjd809ur70vpuetfs6hlbc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAb20Et0vwioDtbATCh687c45plK0ui6i4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "171747250732-k7r5oe75m1sjd809ur70vpuetfs6hlbc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "171747250732-1jampaltvc4hi02bip8l17vthv6n04qa.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "k"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
