@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:ShopX/screens/home/widgets/explore/explore_product_card.dart';
-import 'package:ShopX/stores/store.dart';
+import 'package:ShopX/store/store.dart';
 import 'package:ShopX/data_models/product.dart';
 
 class Explore extends StatelessWidget {

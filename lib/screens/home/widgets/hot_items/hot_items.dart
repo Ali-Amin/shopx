@@ -3,7 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:ShopX/data_models/product.dart';
 import 'package:ShopX/screens/home/widgets/hot_items/hot_product_card.dart';
-import 'package:ShopX/stores/store.dart';
+import 'package:ShopX/store/store.dart';
 
 class HotItems extends StatelessWidget {
   @override

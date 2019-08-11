@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ShopX/stores/store.dart';
+import 'package:ShopX/store/store.dart';
 
 class Search extends StatelessWidget {
   @override
