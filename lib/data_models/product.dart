@@ -1,27 +1,38 @@
 class Product {
-  String _name;
-  String _price;
-  String _photoUrl;
-  int _backgroundColor = 0xFF2547F4;
-  String _description;
+  final String _name, _description, _uid;
+  final List<String> _photos;
+  final int _backgroundColor;
+  final num _price;
 
   String get name => _name;
-  String get price => _price;
-  String get photoUrl => _photoUrl;
-  int get color => _backgroundColor;
+  List<String> get photos => _photos;
+  num get price => _price;
+  int get backgroundColor => _backgroundColor;
   String get description => _description;
 
-  Product({
+  Product._({
+    String uid,
     String name,
-    String price,
-    String photoUrl,
-    int color,
+    num price,
+    List<String> photos,
+    int backgroundColor,
     String description,
-  }) {
-    _name = name;
-    _price = price;
-    _photoUrl = photoUrl;
-    _backgroundColor = color;
-    _description = description;
+  })  : _uid = uid,
+        _name = name,
+        _price = price,
+        _photos = photos,
+        _backgroundColor = backgroundColor,
+        _description = description;
+
+  factory Product.fromJson(Map<String, dynamic> json) {
+    List<String> photos = List.castFrom<dynamic, String>(json['photos']);
+    int backgroundColor = int.tryParse(json['backgroundColor']);
+    return Product._(
+      uid: json['uid'],
+      name: json['name'],
+      price: json['price'],
+      backgroundColor: backgroundColor,
+      photos: photos,
+    );
   }
 }
