@@ -11,7 +11,7 @@ class AddToCartButton extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: Theme.of(context).accentColor,
-            blurRadius: 8,
+            blurRadius: 4,
           )
         ],
       ),
@@ -30,7 +30,7 @@ class AddToCartButton extends StatelessWidget {
             height: 80,
             alignment: Alignment.center,
             child: Text(
-              "Add to cart",
+              "ADD TO CART",
               style: TextStyle(
                 color: Colors.white,
               ),
