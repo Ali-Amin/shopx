@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:shoptronics/screens/screens.dart';
+import 'package:shoptronics/data_models/product.dart';
 
 class ProductCard extends StatelessWidget {
-  ProductCard({Key key, this.child, this.width, this.height, this.color})
-      : super(key: key);
-
+  ProductCard({
+    Key key,
+    @required this.child,
+    @required this.width,
+    @required this.height,
+    @required this.color,
+    @required this.product,
+  }) : super(key: key);
+  final Product product;
   final Widget child;
   final double width;
   final double height;
@@ -17,7 +24,9 @@ class ProductCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ProductScreen(),
+            builder: (context) => ProductScreen(
+              product: product,
+            ),
           ),
         );
       },

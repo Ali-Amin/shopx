@@ -9,14 +9,6 @@ part of 'store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars
 
 mixin _$AppStore on AppStoreBase, Store {
-  Computed<Category> _$currentlySelectedCategoryComputed;
-
-  @override
-  Category get currentlySelectedCategory =>
-      (_$currentlySelectedCategoryComputed ??=
-              Computed<Category>(() => super.currentlySelectedCategory))
-          .value;
-
   final _$categoriesAtom = Atom(name: 'AppStoreBase.categories');
 
   @override
@@ -51,23 +43,99 @@ mixin _$AppStore on AppStoreBase, Store {
     }, _$productsAtom, name: '${_$productsAtom.name}_set');
   }
 
+  final _$hotItemsAtom = Atom(name: 'AppStoreBase.hotItems');
+
+  @override
+  ObservableList<Product> get hotItems {
+    _$hotItemsAtom.context.enforceReadPolicy(_$hotItemsAtom);
+    _$hotItemsAtom.reportObserved();
+    return super.hotItems;
+  }
+
+  @override
+  set hotItems(ObservableList<Product> value) {
+    _$hotItemsAtom.context.conditionallyRunInAction(() {
+      super.hotItems = value;
+      _$hotItemsAtom.reportChanged();
+    }, _$hotItemsAtom, name: '${_$hotItemsAtom.name}_set');
+  }
+
+  final _$isBusyAtom = Atom(name: 'AppStoreBase.isBusy');
+
+  @override
+  bool get isBusy {
+    _$isBusyAtom.context.enforceReadPolicy(_$isBusyAtom);
+    _$isBusyAtom.reportObserved();
+    return super.isBusy;
+  }
+
+  @override
+  set isBusy(bool value) {
+    _$isBusyAtom.context.conditionallyRunInAction(() {
+      super.isBusy = value;
+      _$isBusyAtom.reportChanged();
+    }, _$isBusyAtom, name: '${_$isBusyAtom.name}_set');
+  }
+
+  final _$currentlySelectedCategoryAtom =
+      Atom(name: 'AppStoreBase.currentlySelectedCategory');
+
+  @override
+  Category get currentlySelectedCategory {
+    _$currentlySelectedCategoryAtom.context
+        .enforceReadPolicy(_$currentlySelectedCategoryAtom);
+    _$currentlySelectedCategoryAtom.reportObserved();
+    return super.currentlySelectedCategory;
+  }
+
+  @override
+  set currentlySelectedCategory(Category value) {
+    _$currentlySelectedCategoryAtom.context.conditionallyRunInAction(() {
+      super.currentlySelectedCategory = value;
+      _$currentlySelectedCategoryAtom.reportChanged();
+    }, _$currentlySelectedCategoryAtom,
+        name: '${_$currentlySelectedCategoryAtom.name}_set');
+  }
+
+  final _$fetchCategoriesAsyncAction = AsyncAction('fetchCategories');
+
+  @override
+  Future<Null> fetchCategories() {
+    return _$fetchCategoriesAsyncAction.run(() => super.fetchCategories());
+  }
+
+  final _$fetchProductsAsyncAction = AsyncAction('fetchProducts');
+
+  @override
+  Future<Null> fetchProducts(String categoryUid) {
+    return _$fetchProductsAsyncAction
+        .run(() => super.fetchProducts(categoryUid));
+  }
+
+  final _$fetchHotItmesAsyncAction = AsyncAction('fetchHotItmes');
+
+  @override
+  Future<Null> fetchHotItmes() {
+    return _$fetchHotItmesAsyncAction.run(() => super.fetchHotItmes());
+  }
+
   final _$AppStoreBaseActionController = ActionController(name: 'AppStoreBase');
 
   @override
-  void fetchCategories() {
+  void initState() {
     final _$actionInfo = _$AppStoreBaseActionController.startAction();
     try {
-      return super.fetchCategories();
+      return super.initState();
     } finally {
       _$AppStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void fetchProducts() {
+  void changeCategory(Category category) {
     final _$actionInfo = _$AppStoreBaseActionController.startAction();
     try {
-      return super.fetchProducts();
+      return super.changeCategory(category);
     } finally {
       _$AppStoreBaseActionController.endAction(_$actionInfo);
     }

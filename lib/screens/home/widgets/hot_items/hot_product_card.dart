@@ -10,6 +10,7 @@ class HotProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ProductCard(
+      product: product,
       width: 255,
       height: 175,
       color: Color(product.backgroundColor),
@@ -21,11 +22,11 @@ class HotProductCard extends StatelessWidget {
             width: 160,
             height: 140,
             alignment: Alignment.centerLeft,
-            // child: Hero(
-            // tag: product.uid,
-            child: Image.asset(
-              product.defaultPhoto,
-              // ),
+            child: Hero(
+              tag: product.uid,
+              child: Image.network(
+                product.defaultPhoto,
+              ),
             ),
           ),
         ],

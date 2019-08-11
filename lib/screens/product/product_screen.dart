@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:shoptronics/screens/product/widgets/widgets.dart';
+import 'package:shoptronics/data_models/product.dart';
 
 class ProductScreen extends StatelessWidget {
+  final Product product;
+
+  const ProductScreen({Key key, @required this.product}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +24,9 @@ class ProductScreen extends StatelessWidget {
             children: <Widget>[
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.35,
-                child: ImagePageView(),
+                child: ImagePageView(
+                  product: product,
+                ),
               ),
               SizedBox(height: 40),
               ProductInfo(),

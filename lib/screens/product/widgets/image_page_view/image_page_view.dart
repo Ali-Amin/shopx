@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:shoptronics/data_models/product.dart';
 
 class ImagePageView extends StatefulWidget {
+  final Product product;
+
+  const ImagePageView({Key key, @required this.product}) : super(key: key);
   @override
   _ImagePageViewState createState() => _ImagePageViewState();
 }
@@ -9,14 +13,12 @@ class _ImagePageViewState extends State<ImagePageView> {
   @override
   Widget build(BuildContext context) {
     return Hero(
-      tag: "assets/images/product1.png0",
+      tag: widget.product.uid,
       child: PageView(
         physics: BouncingScrollPhysics(),
-        children: <Widget>[
-          Image.asset("assets/images/product1.png"),
-          Image.asset("assets/images/product1.png"),
-          Image.asset("assets/images/product1.png"),
-        ],
+        children: widget.product.photos.map((String photoUrl) {
+          return Image.network(photoUrl);
+        }).toList(),
       ),
     );
   }

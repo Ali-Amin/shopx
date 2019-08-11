@@ -17,30 +17,59 @@ abstract class AppStoreBase with Store {
   @observable
   ObservableList<Product> products = ObservableList<Product>.of([]);
 
-  @computed
-  Category get currentlySelectedCategory =>
-      Category.fromJson({'name': "mobiles", 'uid': 'pAeUJQbH7Bidzg0yzbGy'});
+  @observable
+  ObservableList<Product> hotItems = ObservableList<Product>.of([]);
+
+  @observable
+  bool isBusy = true;
+
+  @observable
+  Category currentlySelectedCategory;
 
   @action
-  void fetchCategories() {
-    _api.fetchCategories.then((QuerySnapshot query) {
-      query.documents.forEach((DocumentSnapshot doc) {
-        categories.add(Category.fromJson(doc.data));
-      });
-    });
+  void initState() {
+    fetchCategories().then(
+      (_) {
+        fetchProducts(categories.first.uid);
+        currentlySelectedCategory = categories.first;
+      },
+    );
+    fetchHotItmes();
   }
 
   @action
-  void fetchProducts() {
-    _api.fetchProducts(currentlySelectedCategory.uid).then(
-      (QuerySnapshot query) {
-        query.documents.forEach(
-          (DocumentSnapshot doc) {
-            // products.clear();
-            products.add(Product.fromJson(doc.data));
-          },
-        );
-      },
+  Future<Null> fetchCategories() async {
+    QuerySnapshot query = await _api.fetchCategories;
+    categories = ObservableList.of(
+      query.documents
+          .map((DocumentSnapshot doc) => Category.fromJson(doc.data))
+          .toList(),
     );
+  }
+
+  @action
+  Future<Null> fetchProducts(String categoryUid) async {
+    QuerySnapshot query = await _api.fetchProducts(categoryUid);
+    products = ObservableList.of(
+      query.documents
+          .map((DocumentSnapshot doc) => Product.fromJson(doc.data))
+          .toList(),
+    );
+  }
+
+  @action
+  Future<Null> fetchHotItmes() async {
+    QuerySnapshot query = await _api.fetchHotItems();
+    hotItems = ObservableList.of(
+      query.documents
+          .map((DocumentSnapshot doc) => Product.fromJson(doc.data))
+          .toList(),
+    );
+  }
+
+  @action
+  void changeCategory(Category category) {
+    currentlySelectedCategory = category;
+    fetchProducts(category.uid);
   }
 }

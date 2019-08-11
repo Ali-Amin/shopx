@@ -25,6 +25,7 @@ class ExploreProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ProductCard(
+      product: product,
       width: 150,
       height: 250,
       color: Color(product.backgroundColor),

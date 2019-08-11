@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:provider/provider.dart';
 import 'package:shoptronics/data_models/product.dart';
 import 'package:shoptronics/screens/home/widgets/hot_items/hot_product_card.dart';
+import 'package:shoptronics/stores/store.dart';
 
 class HotItems extends StatelessWidget {
   @override
@@ -27,69 +30,22 @@ class HotItems extends StatelessWidget {
 }
 
 class HotProductList extends StatelessWidget {
-  final List<Product> products = [
-    Product(
-      name: "Huawei ARX 502F",
-      price: 100.00,
-      photoUrl: "assets/images/product3.png",
-      backgroundColor: 0xFFA26FFF,
-    ),
-    Product(
-      name: "Huawei ARX 502F",
-      price: 100.00,
-      photoUrl: "assets/images/product1.png",
-      backgroundColor: 0xFF4769F4,
-    ),
-    Product(
-      name: "Huawei ARX 502F",
-      price: 100.00,
-      photoUrl: "assets/images/product2.png",
-      backgroundColor: 0xFFFFFFFF,
-    ),
-    Product(
-      name: "Huawei ARX 502F",
-      price: 100.00,
-      photoUrl: "assets/images/product3.png",
-      backgroundColor: 0xFFA26FFF,
-    ),
-    Product(
-      name: "Huawei ARX 502F",
-      price: 100.00,
-      photoUrl: "assets/images/product1.png",
-      backgroundColor: 0xFF4769F4,
-    ),
-    Product(
-      name: "Huawei ARX 502F",
-      price: 100.00,
-      photoUrl: "assets/images/product2.png",
-      backgroundColor: 0xFFFFFFFF,
-    ),
-    Product(
-      name: "Huawei ARX 502F",
-      price: 100.00,
-      photoUrl: "assets/images/product1.png",
-      backgroundColor: 0xFF4769F4,
-    ),
-    Product(
-      name: "Huawei ARX 502F",
-      price: 100.00,
-      photoUrl: "assets/images/product2.png",
-      backgroundColor: 0xFFFFFFFF,
-    ),
-  ];
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        height: 175,
-        child: ListView.builder(
-          padding: const EdgeInsets.only(left: 32.0),
-          physics: BouncingScrollPhysics(),
-          scrollDirection: Axis.horizontal,
-          itemCount: products.length,
-          itemBuilder: (context, index) => HotProductCard(
-            product: products[index],
-            index: index,
-          ),
-        ));
+    final AppStore store = Provider.of(context);
+    return Observer(
+      builder: (_) => SizedBox(
+          height: 175,
+          child: ListView.builder(
+            padding: const EdgeInsets.only(left: 32.0),
+            physics: BouncingScrollPhysics(),
+            scrollDirection: Axis.horizontal,
+            itemCount: store.hotItems.length,
+            itemBuilder: (context, index) => HotProductCard(
+              product: store.hotItems[index],
+              index: index,
+            ),
+          )),
+    );
   }
 }
