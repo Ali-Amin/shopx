@@ -26,5 +26,4 @@ UI by [Soumitro_Sobuj](https://dribbble.com/shots/6876936-Product-App-Exploratio
 - [ ] Bottom Navigation Bar has blue background, should be transparent
 - [ ] AppBar should fade out intro the screen instead of cutting it off
 
- ##### Find any bugs/problems with the app? please submit an issue or a pull request
 
