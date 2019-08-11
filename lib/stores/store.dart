@@ -27,13 +27,11 @@ abstract class AppStoreBase with Store {
   List<Product> get filteredProducts {
     if (searchKeyword != null) {
       return ObservableList.of(
-        products
-            .where(
-              (Product product) => product.name
-                  .toLowerCase()
-                  .contains(searchKeyword.toLowerCase()),
-            )
-            .toList(),
+        products.where((Product product) {
+          String productName = product.name.toLowerCase();
+          bool inProductName = productName.contains(searchKeyword);
+          return inProductName;
+        }).toList(),
       );
     } else {
       return products;
@@ -92,6 +90,6 @@ abstract class AppStoreBase with Store {
 
   @action
   void setSearchKeyword(String keyword) {
-    searchKeyword = keyword;
+    searchKeyword = keyword.toLowerCase();
   }
 }

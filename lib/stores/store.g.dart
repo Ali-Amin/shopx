@@ -9,6 +9,13 @@ part of 'store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars
 
 mixin _$AppStore on AppStoreBase, Store {
+  Computed<List<Product>> _$filteredProductsComputed;
+
+  @override
+  List<Product> get filteredProducts => (_$filteredProductsComputed ??=
+          Computed<List<Product>>(() => super.filteredProducts))
+      .value;
+
   final _$categoriesAtom = Atom(name: 'AppStoreBase.categories');
 
   @override
