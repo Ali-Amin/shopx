@@ -1,5 +1,5 @@
 # ShopX
-#### E-Commerce Flutter App Using MobX State Management
+#### E-Commerce Flutter App Using Firebase and MobX State Management
 UI by [Soumitro_Sobuj](https://dribbble.com/shots/6876936-Product-App-Exploration)
 
 Download [apk](https://github.com/Ali-Amin/shopx/releases/tag/1.0%2B1)
@@ -11,7 +11,7 @@ Download [apk](https://github.com/Ali-Amin/shopx/releases/tag/1.0%2B1)
 
 
 
-### Features
+## Features
 - [x] Fetch product data from Firebase Cloud Firestore
 - [x] View product information
 - [x] Use MobX only for state management
@@ -24,6 +24,27 @@ Download [apk](https://github.com/Ali-Amin/shopx/releases/tag/1.0%2B1)
 - [ ] Favourites
 - [ ] Profile
 
+
+## Firestore structure
+### Collections
+#### Categories
+```
+uid: String
+name: String
+```
+![CAT](https://user-images.githubusercontent.com/41022464/63609186-e9575a00-c5d6-11e9-805b-e4f7df9ffe23.PNG)
+###
+#### Products
+```
+backgroundColor: String
+category: String
+description: String
+name: String
+photos: String[]
+price: number
+uid: string
+```
+![PROD](https://user-images.githubusercontent.com/41022464/63609190-ea888700-c5d6-11e9-90e5-bf455d05f056.PNG)
 ### Issues
 - [ ] Bottom Navigation Bar has blue background, should be transparent
 - [ ] AppBar should fade out intro the screen instead of cutting it off
